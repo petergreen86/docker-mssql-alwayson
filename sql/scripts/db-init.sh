@@ -33,7 +33,9 @@ sleep ${SLEEP_TIME}
 
 #use the SA password from the environment variable
 echo "<#############>    running set up script ${SQL_SCRIPT}"
-/opt/mssql-tools/bin/sqlcmd \
+/opt/mssql-tools18/bin/sqlcmd \
+    -C \
+    -l 30 \
     -S localhost,$TCP_PORT \
     -U sa \
     -P $SA_PASSWORD \
@@ -42,7 +44,9 @@ echo "<#############>    running set up script ${SQL_SCRIPT}"
 
 # create failove sql agent job
 echo "<#############>    running sql agent failover job"
-/opt/mssql-tools/bin/sqlcmd \
+/opt/mssql-tools18/bin/sqlcmd \ 
+    -C \
+    -l 30 \
     -S localhost,$TCP_PORT \
     -U sa \
     -P $SA_PASSWORD \
